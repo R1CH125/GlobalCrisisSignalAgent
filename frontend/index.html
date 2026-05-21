@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Crisis Signal Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">GLOBAL CRISIS SIGNAL AGENT</p>
+          <h1>An AI early warning system for humanitarian crises.</h1>
+          <p class="hero-copy">
+            This agent fuses social chatter, global news, and environmental anomalies to detect crisis signals before
+            they become mainstream.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button id="runDemoButton">Run Demo</button>
+        </div>
+      </header>
+
+      <section class="kpi-grid">
+        <article class="kpi-card">
+          <span>Active Reports</span>
+          <strong id="reportCount">0</strong>
+        </article>
+        <article class="kpi-card">
+          <span>Alerts Sent</span>
+          <strong id="alertCount">0</strong>
+        </article>
+        <article class="kpi-card">
+          <span>Mode</span>
+          <strong id="modeValue">demo</strong>
+        </article>
+        <article class="kpi-card">
+          <span>Top Region</span>
+          <strong id="topRegion">Awaiting scan</strong>
+        </article>
+      </section>
+
+      <main class="dashboard-grid">
+        <section class="panel panel-map">
+          <div class="panel-header">
+            <h2>Global Crisis Map</h2>
+            <span class="status-pill" id="mapStatus">Monitoring</span>
+          </div>
+          <div id="mapRoot" class="map-root"></div>
+        </section>
+
+        <section class="panel panel-feed">
+          <div class="panel-header">
+            <h2>Crisis Feed</h2>
+            <span class="panel-subtitle">Real-time alerts</span>
+          </div>
+          <div id="feedRoot" class="feed-root"></div>
+        </section>
+
+        <section class="panel panel-breakdown">
+          <div class="panel-header">
+            <h2>Signal Breakdown</h2>
+            <span class="panel-subtitle">Contributing evidence</span>
+          </div>
+          <div id="breakdownRoot" class="breakdown-root"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
