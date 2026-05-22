@@ -13,8 +13,8 @@ I co-developed this project during the NVIDIA Hackathon.
 My contributions included:
 
 - Implementing backend data ingestion and processing workflows
-- Supporting anomaly detection and crisis scoring logic
-- Building prototype backend and application features
+- Supporting anomaly detection, AI-assisted reasoning, and crisis scoring workflows
+- Rapidly implementing backend and application features during hackathon development
 - Connecting APIs, processing pipelines, and dashboard outputs
 - Assisting with system integration and live demo preparation
 - Collaborating under rapid hackathon development timelines
