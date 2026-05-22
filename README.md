@@ -1,74 +1,105 @@
 # Global Crisis Signal Agent
 
-An AI early warning system for humanitarian crises.
+AI-powered humanitarian crisis early warning system built during the NVIDIA Hackathon at San José State University.
+
+The platform ingests social, news, and environmental data streams, detects emerging anomalies, computes weighted crisis likelihood scores, and dispatches alerts through a live dashboard.
+
+---
+
+## My Role
+
+I co-developed this project during the NVIDIA Hackathon.
+
+My contributions included:
+
+- Implementing backend data ingestion and processing workflows
+- Supporting anomaly detection and crisis scoring logic
+- Building prototype backend and application features
+- Connecting APIs, processing pipelines, and dashboard outputs
+- Assisting with system integration and live demo preparation
+- Collaborating under rapid hackathon development timelines
+
+---
 
 ## Problem
 
-Humanitarian crises often become visible to institutions only after multiple warning signs have already converged: drought signals, local social reporting, migration chatter, food market stress, and regional news coverage. Analysts lose time when those signals stay fragmented across APIs and dashboards.
+Humanitarian crises often become visible to institutions only after multiple warning signs have already converged:
+
+- drought signals
+- migration chatter
+- food market stress
+- regional news coverage
+- local social reporting
+
+Analysts lose valuable response time when those signals remain fragmented across APIs, dashboards, and reporting systems.
+
+---
 
 ## Solution
 
-Global Crisis Signal Agent ingests social, news, and environmental data streams, normalizes them into one schema, detects anomalies, synthesizes the evidence with a Nemotron-style reasoning layer, computes a weighted crisis likelihood score, and dispatches alerts while updating a live dashboard.
+Global Crisis Signal Agent normalizes multi-source signals into a unified processing pipeline that:
 
-The prototype is designed for hackathon demo value:
+1. Collects real-time crisis indicators
+2. Cleans and normalizes incoming data
+3. Detects anomalies and geographic clustering
+4. Applies AI-assisted reasoning workflows
+5. Computes weighted crisis likelihood scores
+6. Dispatches alerts and updates a live dashboard
 
-- It runs immediately in `DEMO_MODE=true` with a realistic Northern Kenya drought scenario.
-- It switches to live API ingestion when credentials are present.
-- It includes alert payloads for ReliefWeb, Slack, Discord, AWS SES, and generic NGO webhooks.
+The prototype supports both:
+- demo simulation mode
+- live API ingestion mode
 
-## Architecture
+---
+
+# System Architecture
 
 ```text
 APIs -> Source Clients -> Unified Signal Schema -> Cleaning Pipeline
-    -> Indicator Extraction -> Historical Similarity -> Nemotron Reasoning
+    -> Indicator Extraction -> Historical Similarity -> AI Reasoning Layer
     -> Crisis Score Engine -> Alert Dispatcher -> Flask API -> Dashboard
 ```
 
-### Core flow
+---
 
-1. Collect real-time signals from social, news, and environmental sources.
-2. Clean and deduplicate the signal stream.
-3. Detect spikes, multi-source confirmation, geographic clustering, and environmental correlation.
-4. Run structured Nemotron-style reasoning.
-5. Compute a crisis score with the weighted formula below.
-6. Trigger alerts and update the dashboard.
+## Core Processing Flow
 
-## APIs Used
+1. Collect real-time social, news, and environmental signals
+2. Clean and deduplicate signal streams
+3. Detect spikes, clustering, and multi-source confirmation
+4. Run structured AI-assisted reasoning workflows
+5. Compute weighted crisis severity scores
+6. Trigger alerts and update the monitoring dashboard
 
-### Social
+---
 
-- Twitter/X recent search
+# APIs & Data Sources
+
+## Social Sources
+
+- Twitter/X Recent Search
 - Reddit via PRAW
 - Telegram Bot API
-- Optional Google Trends via `pytrends`
+- Google Trends (optional)
 
-### News
+## News Sources
 
 - GDELT
 - NewsAPI
 - Event Registry
 - MediaStack
-- Optional FAOSTAT enrichment
 
-### Environmental
+## Environmental Sources
 
 - OpenWeather
 - NASA EarthData
-- NOAA Climate Data Online
+- NOAA Climate Data
 - Global Flood Monitoring System
 - Copernicus Climate Data
 
-### Alerting
+---
 
-- ReliefWeb API enrichment/submission pattern
-- Slack webhook
-- Discord webhook
-- AWS SES
-- Generic NGO webhook
-
-## Crisis Scoring
-
-Implemented in [backend/scoring/crisis_score.py](/Users/malcolmdyer/Documents/Hackathon Projects/backend/scoring/crisis_score.py).
+# Crisis Scoring Engine
 
 ```python
 crisis_score = (
@@ -79,14 +110,42 @@ crisis_score = (
 )
 ```
 
-Thresholds:
+## Risk Thresholds
 
-- `0.0 - 0.3`: Normal
-- `0.3 - 0.6`: Emerging Risk
-- `0.6 - 0.8`: High Alert
-- `0.8 - 1.0`: Crisis Likely
+| Score Range | Alert Level |
+|---|---|
+| 0.0 - 0.3 | Normal |
+| 0.3 - 0.6 | Emerging Risk |
+| 0.6 - 0.8 | High Alert |
+| 0.8 - 1.0 | Crisis Likely |
 
-## Project Structure
+---
+
+# Technologies Used
+
+## Backend
+
+- Python
+- Flask
+- REST APIs
+
+## AI & Data Processing
+
+- NVIDIA Nemotron-style reasoning workflows
+- Anomaly detection
+- Signal normalization
+- Historical similarity analysis
+
+## Infrastructure & Integration
+
+- Slack webhooks
+- Discord webhooks
+- AWS SES
+- NGO alert webhooks
+
+---
+
+# Project Structure
 
 ```text
 backend/
@@ -94,16 +153,63 @@ backend/
   data_sources/
   processing/
   scoring/
+
 frontend/
   components/
+
 main.py
 requirements.txt
 README.md
 ```
 
-## How To Run
+---
 
-### 1. Install dependencies
+# Demo Scenario
+
+The built-in demo simulates an emerging drought-driven humanitarian crisis in Northern Kenya using:
+
+- environmental drought anomalies
+- food shortage reports
+- migration-related Telegram updates
+- regional crop failure news reports
+
+Expected outcomes include:
+
+- structured crisis reports
+- weighted crisis likelihood scores
+- triggered alert dispatch payloads
+- live dashboard updates
+
+---
+
+# AI Reasoning Layer
+
+The platform includes AI-assisted reasoning workflows for:
+
+- key event extraction
+- crisis indicator assessment
+- cross-source synthesis
+- severity evaluation
+
+The system supports deterministic local fallback logic when no external AI inference endpoint is configured.
+
+---
+
+# Alert Integrations
+
+Supported integrations include:
+
+- Slack
+- Discord
+- AWS SES
+- NGO webhooks
+- ReliefWeb enrichment patterns
+
+---
+
+# How To Run
+
+## 1. Install Dependencies
 
 ```bash
 python3 -m venv .venv
@@ -111,96 +217,69 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Configure environment
+## 2. Configure Environment
 
 ```bash
 cp .env.example .env
 ```
 
-Leave `DEMO_MODE=true` for the hackathon demo. Add API keys later for live ingestion.
+Leave:
 
-### 3. Start the app
+```text
+DEMO_MODE=true
+```
+
+enabled for the demo scenario.
+
+---
+
+## 3. Start the Application
 
 ```bash
 python3 main.py
 ```
 
-Open `http://127.0.0.1:5000`.
+Open:
 
-## CLI Shortcuts
+```text
+http://127.0.0.1:5000
+```
 
-Run one monitoring pass:
+---
+
+# Demo Commands
+
+Run one monitoring cycle:
 
 ```bash
 python3 main.py --run-once
 ```
 
-Run the critical drought demo:
+Run the Northern Kenya demo scenario:
 
 ```bash
 python3 main.py --demo
 ```
 
-## Demo Scenario
+---
 
-The built-in demo simulates an emerging drought-driven humanitarian crisis in Northern Kenya using:
+# Screenshots
 
-- environmental drought anomalies
-- tweets about food shortages and dry wells
-- Telegram field updates describing migration
-- news reports about crop failure and hunger
+(Add dashboard screenshots here)
 
-Expected outcome:
+---
 
-- a structured crisis report
-- a crisis score in the `High Alert` or `Crisis Likely` range
-- triggered alert dispatch payloads
-- dashboard markers and feed updates
+# Future Improvements
 
-## Nemotron Reasoning Layer
+- Real-time streaming ingestion
+- Distributed processing workers
+- Enhanced AI threat reasoning
+- Geospatial visualization
+- Advanced anomaly detection
+- Multi-region monitoring support
 
-Implemented in [backend/processing/reasoning.py](/Users/malcolmdyer/Documents/Hackathon Projects/backend/processing/reasoning.py).
+---
 
-The system includes:
+# NVIDIA Hackathon Project
 
-- prompt builders for key event extraction
-- prompt builders for crisis indicator assessment
-- cross-source synthesis prompts
-- a local deterministic fallback when no Nemotron endpoint is configured
-
-This means the prototype is runnable without an LLM dependency, but ready to plug into a Nemotron-compatible inference endpoint later.
-
-## Alert Payload Examples
-
-Slack:
-
-```json
-{
-  "text": "[High Alert] Northern Kenya crisis score=0.79"
-}
-```
-
-Discord:
-
-```json
-{
-  "content": "Global Crisis Signal Agent: Northern Kenya moved to High Alert"
-}
-```
-
-NGO webhook:
-
-```json
-{
-  "region": "Northern Kenya",
-  "alert_level": "High Alert",
-  "crisis_score": 0.79
-}
-```
-
-## Notes
-
-- The public ReliefWeb API is best used here as an enrichment channel and partner submission pattern, not a guaranteed anonymous publishing endpoint.
-- Set `ENABLE_RELIEFWEB_LOOKUP=true` if you want the app to perform live ReliefWeb enrichment requests.
-- GFMS and Copernicus are wired as pluggable HTTP adapters because production deployments usually depend on org-specific access patterns.
-- The dashboard is static HTML/JS for speed and portability, with no frontend build step required.
+Built during the NVIDIA Hackathon at San José State University as a rapid prototype focused on AI-assisted humanitarian crisis detection and response workflows.
