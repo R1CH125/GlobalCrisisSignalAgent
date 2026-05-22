@@ -21,6 +21,20 @@ My contributions included:
 
 ---
 
+## NVIDIA Hackathon Context
+
+This project was developed during the NVIDIA Hackathon at San José State University as a rapid AI-assisted prototype focused on humanitarian crisis detection workflows.
+
+The hackathon emphasized:
+- rapid prototyping
+- practical AI integration
+- accelerated development workflows
+- experimentation with NVIDIA Nemotron-style reasoning systems
+
+The platform was designed to demonstrate how AI-assisted signal synthesis and anomaly detection could support earlier humanitarian crisis awareness and response coordination.
+
+---
+
 ## Problem
 
 Humanitarian crises often become visible to institutions only after multiple warning signs have already converged:
