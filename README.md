@@ -279,7 +279,35 @@ python3 main.py --demo
 
 # Screenshots
 
-(Add dashboard screenshots here)
+## Dashboard Overview
+
+The live dashboard displays active crisis reports, alert counts, monitoring mode, and top high-risk regions.
+
+![Dashboard Overview](dashboard-overview.png)
+
+---
+
+## Global Crisis Monitoring Map
+
+The monitoring map visualizes geographic clustering and weighted crisis severity scores across active regions.
+
+![Global Crisis Map](global-crisis-map.png)
+
+---
+
+## Real-Time Crisis Feed
+
+The crisis feed displays AI-assisted alert generation and real-time crisis severity updates from multi-source signals.
+
+![Crisis Feed](crisis-feed.png)
+
+---
+
+## Signal Breakdown Analysis
+
+The signal analysis panel shows contributing evidence, anomaly indicators, environmental correlation, and weighted scoring components.
+
+![Signal Breakdown](signal-breakdown.png)
 
 ---
 
