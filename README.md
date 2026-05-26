@@ -311,6 +311,14 @@ The signal analysis panel shows contributing evidence, anomaly indicators, envir
 
 ---
 
+# System Architecture
+
+Detailed architecture documentation:
+
+- [System Architecture](docs/system-architecture.md)
+  
+---
+
 # Future Improvements
 
 - Real-time streaming ingestion
